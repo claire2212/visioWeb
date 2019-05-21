@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-visio-web" version="0.0.1">
+    <name>VisioWebPlugin</name>
+
+    <description>A Cordova plugin that allows users to display video and sound in a webView.</description>
+    <license>MIT</license>
+
+    <keywords>cordova,android,toast,message,alert</keywords>
+    <repo>https://github.com/claire2212/visioWeb</repo>
+    <issue>https://github.com/claire2212/visioWeb/issues</issue>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+        <engine name="cordova-ios" version=">=1.7.1" />
+    </engines>
+
+    <js-module src="www/visioWeb.js" name="visioWebPlugin">
+        <clobbers target="window.plugins.visioWebPlugin" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+            <string>APRIL</string>
+        </config-file>
+        <config-file parent="NSMicrophoneUsageDescription" target="*-Info.plist">
+            <string>APRIL</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <array>
+                <dict>
+                    <key>NSAllowsLocalNetworking</key>
+                    <string>true</string>
+                </dict>
+            </array>
+        </config-file>
+
+        <header-file src="src/ios/visioWeb.framework/Headers/visioWeb.h"/>
+        <header-file src="src/ios/visioWeb.framework/Headers/VWErrorDomain.h"/>
+        <header-file src="src/ios/visioWeb.framework/Headers/VWVisioWebController.h"/>
+        <framework src="visioWeb.framework" custom="true" />
+    </platform>
+</plugin>
